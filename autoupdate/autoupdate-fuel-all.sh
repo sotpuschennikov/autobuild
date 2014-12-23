@@ -9,7 +9,7 @@
 #####################################################
 
 #PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient fuelmenu shotgun nailgun rubygem-naily"
-PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient fuelmenu shotgun nailgun"
+PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient python-tasklib fuelmenu shotgun nailgun"
 
 [ -z "$SRCBRANCH" ] && export SRCBRANCH=master
 [ -z "$WRKDIR" ] && export WRKDIR=`pwd`
