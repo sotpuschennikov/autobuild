@@ -45,7 +45,8 @@ if $NEEDUPDATE; then
 
       # Unpack specs
       cd $MYOUTDIR/dst
-      tar -xf $WRKDIR/$DEBSPECFILE
+#      tar -xf $WRKDIR/$DEBSPECFILE
+      cp -R $MYOUTDIR/spec/$DEBSPECFILE/debian .
       version=`cat debian/changelog | head -1 | cut -d' ' -f2 | sed 's|(||;s|\-.*||'`
       mkdir $PACKAGENAME-$version
       # Update source
