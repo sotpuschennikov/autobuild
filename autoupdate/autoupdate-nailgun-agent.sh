@@ -7,7 +7,7 @@ SRCFILES='bin/agent bin/nailgun-agent.cron'
 RPMDSTFILES='agent nailgun-agent.cron'
 DEBDSTFILES='agent ../debian/nailgun-agent.cron.d'
 RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
-DEBSPECFILE="autoupdate/SPECS/$PACKAGENAME-spec.tgz"
+DEBSPECFILE="packages/deb/specs/$PACKAGENAME"
 AGGREGATE=false
 
 source $WRKDIR/build-functions.sh

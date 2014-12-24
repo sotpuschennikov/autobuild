@@ -9,7 +9,7 @@ RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
 SRCFILES='bin/fencing-agent.cron bin/fencing-agent.rb'
 RPMDSTFILES='fencing-agent.cron fencing-agent.rb'
 
-DEBSPECFILE="autoupdate/SPECS/$PACKAGENAME-spec.tgz"
+DEBSPECFILE="packages/deb/specs/$PACKAGENAME"
 
 AGGREGATE=false
 

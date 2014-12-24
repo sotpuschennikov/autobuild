@@ -4,8 +4,7 @@ SRCREPO=https://github.com/stackforge/fuel-astute
 SPECREPO=https://github.com/stackforge/fuel-main
 [ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
 RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
-#RPMSPECFILE="autoupdate/SPECS/$PACKAGENAME.spec"
-DEBSPECFILE="autoupdate/SPECS/$PACKAGENAME-spec.tgz"
+DEBSPECFILE="packages/deb/specs/$PACKAGENAME"
 SRCFILES='mcagents/'
 AGGREGATE=false
 

@@ -5,7 +5,6 @@ SPECREPO=https://github.com/stackforge/fuel-main
 [ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
 RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
 DEBSPECFILE="packages/deb/specs/$PACKAGENAME"
-#DEBSPECFILE="autoupdate/SPECS/$PACKAGENAME-spec.tgz"
 SRCFILES='network_checker/'
 
 AGGREGATE=false

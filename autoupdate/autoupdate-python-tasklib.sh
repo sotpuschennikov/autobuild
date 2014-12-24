@@ -1,12 +1,11 @@
 #!/bin/bash
-PACKAGENAME=nailgun-mcagents
-SRCREPO=https://github.com/stackforge/fuel-astute
+PACKAGENAME=python-tasklib
+SRCREPO=https://github.com/stackforge/fuel-web
 SPECREPO=https://github.com/stackforge/fuel-main
 [ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
 RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
-#RPMSPECFILE="autoupdate/SPECS/$PACKAGENAME.spec"
-DEBSPECFILE="autoupdate/SPECS/$PACKAGENAME-spec.tgz"
-SRCFILES='mcagents/'
+DEBSPECFILE="packages/deb/specs/$PACKAGENAME"
+SRCFILES='tasklib/'
 AGGREGATE=false
 
 source $WRKDIR/build-functions.sh
@@ -26,8 +25,11 @@ if $NEEDUPDATE; then
       cp $MYOUTDIR/spec/$RPMSPECFILE $MYOUTDIR/dst
 
       # Update source
-      cd $MYOUTDIR/src/$SRCFILES
-      tar -czf $MYOUTDIR/dst/mcagents.tar.gz *
+#      cd $MYOUTDIR/src/$SRCFILES
+#      tar -czf $MYOUTDIR/dst/tasklib.tar.gz *
+       pushd $MYOUTDIR/src/$SRCFILES
+       python setup.py sdist -d $MYOUTDIR/dst/
+       popd
 
       autobuildrpmpackage
   else
@@ -41,13 +43,14 @@ if $NEEDUPDATE; then
 
       # Unpack specs
       cd $MYOUTDIR/dst
-      tar -xf $WRKDIR/$DEBSPECFILE
+#      tar -xf $WRKDIR/$DEBSPECFILE
+      cp -R $MYOUTDIR/spec/$DEBSPECFILE/debian .
       version=`cat debian/changelog | head -1 | cut -d' ' -f2 | sed 's|.*(||;s|).*||;s|-.*||'`
       mkdir $PACKAGENAME-$version
 
       # Update source
       cd $MYOUTDIR/src/$SRCFILES
-      tar -czf $MYOUTDIR/dst/$PACKAGENAME-$version/nailgun-mcagents.tar.gz *
+      tar -czf $MYOUTDIR/dst/$PACKAGENAME-$version/python-tasklib.tar.gz *
 
       autobuilddebpackage
   else

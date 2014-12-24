@@ -4,7 +4,6 @@ SRCREPO=https://github.com/stackforge/fuel-web
 SPECREPO=https://github.com/stackforge/fuel-main
 [ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
 RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
-#RPMSPECFILE="autoupdate/SPECS/$PACKAGENAME.spec"
 SRCFILES="$PACKAGENAME/"
 AGGREGATE=false
 

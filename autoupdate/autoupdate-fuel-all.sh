@@ -40,6 +40,7 @@ if [ -n "$GERRITPRJ" ]; then
         bash $WRKDIR/autoupdate/autoupdate-fencing-agent.sh
         bash $WRKDIR/autoupdate/autoupdate-shotgun.sh
         bash $WRKDIR/autoupdate/autoupdate-python-fuelclient.sh
+        bash $WRKDIR/autoupdate/autoupdate-python-tasklib.sh
         bash $WRKDIR/autoupdate/autoupdate-fuelmenu.sh
         bash $WRKDIR/autoupdate/autoupdate-nailgun.sh
         #bash $WRKDIR/autoupdate/autoupdate-rubygem-naily.sh
@@ -61,6 +62,7 @@ if [ -n "$GERRITPRJ" ]; then
         bash $WRKDIR/autoupdate/autoupdate-fencing-agent.sh
         bash $WRKDIR/autoupdate/autoupdate-shotgun.sh
         bash $WRKDIR/autoupdate/autoupdate-python-fuelclient.sh
+        bash $WRKDIR/autoupdate/autoupdate-python-tasklib.sh
         bash $WRKDIR/autoupdate/autoupdate-fuelmenu.sh
         bash $WRKDIR/autoupdate/autoupdate-nailgun.sh
         bash $WRKDIR/autoupdate/autoupdate-nailgun-net-check.sh

@@ -4,7 +4,8 @@ SRCREPO=https://github.com/stackforge/fuel-astute
 #SPECREPO=https://github.com/stackforge/fuel-main
 #[ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
 #RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
-RPMSPECFILE="autoupdate/SPECS/$PACKAGENAME.spec autoupdate/SPECS/astute.conf autoupdate/SPECS/rubygem-astute.spec.in"
+RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec autoupdate/SPECS/astute.conf autoupdate/SPECS/rubygem-astute.spec.in"
+
 SRCFILES='/'
 AGGREGATE=false
 
