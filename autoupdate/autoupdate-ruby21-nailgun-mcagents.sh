@@ -1,7 +1,7 @@
 #!/bin/bash
 PACKAGENAME=ruby21-nailgun-mcagents
 SRCREPO=https://github.com/stackforge/fuel-astute
-#SPECREPO=https://github.com/stackforge/fuel-main
+SPECREPO=https://github.com/stackforge/fuel-main
 #[ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
 #RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.obs.spec"
 RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
@@ -22,8 +22,7 @@ if $NEEDUPDATE; then
       mkdir -p $MYOUTDIR/dst
 
       # Get specs
-      #cp $MYOUTDIR/spec/$RPMSPECFILE $MYOUTDIR/dst
-      cp $WRKDIR/$RPMSPECFILE $MYOUTDIR/dst
+      cp $MYOUTDIR/spec/$RPMSPECFILE $MYOUTDIR/dst
 
       # Update source
       cd $MYOUTDIR/src/$SRCFILES

@@ -47,7 +47,7 @@ if $NEEDUPDATE; then
 
       # Update source
       cd $MYOUTDIR/src/$SRCFILES
-      tar -czf $MYOUTDIR/dst/$PACKAGENAME-$version/nailgun-mcagents.tar.gz *
+      tar -czf $MYOUTDIR/dst/$PACKAGENAME-$version/mcagents.tar.gz *
 
       autobuilddebpackage
   else

@@ -143,7 +143,7 @@ autobuilddebpackage () {
   mv renameforexcludedebian debian
 
   # Create DSC file
-  generate_dsc
+  generate_dsc ${PACKAGENAME}
 
   #Add new files to package
   mv $MYOUTDIR/*.dsc $MYOUTDIR/obs/

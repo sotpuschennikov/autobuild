@@ -1,16 +1,16 @@
 #!/bin/bash
 PACKAGENAME=ruby21-rubygem-astute
 SRCREPO=https://github.com/stackforge/fuel-astute
-#SPECREPO=https://github.com/stackforge/fuel-main
-#[ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
-#RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec"
-RPMSPECFILE="packages/rpm/specs/$PACKAGENAME.spec autoupdate/SPECS/astute.conf autoupdate/SPECS/rubygem-astute.spec.in"
-
-SRCFILES='/'
-AGGREGATE=false
+SPECREPO=https://github.com/stackforge/fuel-main
 
 source $WRKDIR/build-functions.sh
 source $WRKDIR/autoupdate/autoupdate-functions.sh
+
+#[ -z "$SPECBRANCH" ] && SPECBRANCH=$SRCBRANCH
+RPMSPECFILE="$MYOUTDIR/spec/packages/rpm/specs/$PACKAGENAME.spec $WRKDIR/autoupdate/SPECS/astute.conf $WRKDIR/autoupdate/SPECS/rubygem-astute.spec.in"
+
+SRCFILES='/'
+AGGREGATE=false
 
 if $NEEDUPDATE; then
   info "New changes in $PACKAGENAME!!!"
@@ -24,8 +24,7 @@ if $NEEDUPDATE; then
 
       # Get specs
       for specfile in $RPMSPECFILE; do
-        #cp $MYOUTDIR/spec/$specfile $MYOUTDIR/dst
-        cp $WRKDIR/$specfile $MYOUTDIR/dst
+        cp $specfile $MYOUTDIR/dst
       done
 
       # Update source

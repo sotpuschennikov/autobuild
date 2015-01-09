@@ -9,7 +9,7 @@
 #####################################################
 
 #PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient fuelmenu shotgun nailgun rubygem-naily"
-PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient python-tasklib fuelmenu shotgun nailgun"
+PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient python-tasklib fuelmenu shotgun nailgun ruby21-rubygem-astute ruby21-nailgun-mcagents"
 
 [ -z "$SRCBRANCH" ] && export SRCBRANCH=master
 [ -z "$WRKDIR" ] && export WRKDIR=`pwd`
@@ -54,7 +54,7 @@ if [ -n "$GERRITPRJ" ]; then
         fetch_github "https://review.openstack.org/$GERRITPRJ"
         bash $WRKDIR/autoupdate/autoupdate-nailgun-mcagents.sh
         bash $WRKDIR/autoupdate/autoupdate-ruby21-nailgun-mcagents.sh
-        #bash $WRKDIR/autoupdate/autoupdate-ruby21-rubygem-astute.sh
+        bash $WRKDIR/autoupdate/autoupdate-ruby21-rubygem-astute.sh
         ;;
     "stackforge/fuel-main" )
         fetch_github "https://review.openstack.org/$GERRITPRJ"
