@@ -7,7 +7,7 @@
 #export NEEDUPDATE=true
 #export WRKDIR=/home/dburmistrov/git/obs/
 #####################################################
-
+GERRIT_USER='fuel-osci-bot'
 #PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient fuelmenu shotgun nailgun rubygem-naily"
 PACKAGES="nailgun-agent nailgun-mcagents nailgun-net-check fencing-agent fuel-ostf python-fuelclient python-tasklib fuelmenu shotgun nailgun ruby21-rubygem-astute ruby21-nailgun-mcagents"
 
@@ -74,7 +74,23 @@ if [ -n "$GERRITPRJ" ]; then
 else
   for githubname in fuel-web fuel-ostf fuel-astute fuel-main; do
     fetch_github "https://review.openstack.org/stackforge/$githubname"
-  done
+  done 
+  ##if GERRIT TRIGGER 
+  if [ "${BUILD_CAUSE}" == "SCMTRIGGER" ] ; then
+    PACKAGES=""
+    pushd $WRKDIR/data/fuel-main/
+    echo "MARK: fetching current patchset"
+   git fetch -q ssh://$GERRIT_USER@$GERRIT_HOST:$GERRIT_PORT/stackforge/fuel-main $GERRIT_REFSPEC && git checkout -q FETCH_HEAD
+    for rpmspec in fuelmenu nailgun ruby21-rubygem-astute fuel-agent fuel-ostf python-fuelclient ruby21-nailgun-mcagents shotgun; do
+       if [ "`git diff HEAD^ HEAD -- ./packages/rpm/specs/$rpmspec.spec`" ] ;
+         then PACKAGES="$PACKAGES $rpmspec"
+       fi
+    done
+    for dualspec in fencing-agent nailgun-agent nailgun-net-check python-tasklib nailgun-mcagents; do
+      [[ "`git diff HEAD^ HEAD -- ./packages/rpm/specs/$dualspec.spec`" ]] || [[ "`git diff HEAD^ HEAD -- ./packages/deb/specs/$dualspec`" ]] && PACKAGES="$PACKAGES $dualspec"
+    done
+    popd
+  fi
   if [[ "$PACKAGENAME" == "all" ]]; then
     for package in $PACKAGES; do
       [ -f "$WRKDIR/autoupdate/autoupdate-$package.sh" ] && bash $WRKDIR/autoupdate/autoupdate-$package.sh
